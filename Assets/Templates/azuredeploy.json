@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.1.0.0",
+  "parameters": {
+    "ProjectName": {
+      "defaultValue": "",
+      "type": "string",
+      "metadata": {
+        "description": "Define a project name"
+      }
+    },
+    "AddressPrefix": {
+      "defaultValue": "10.47.0.0/16",
+      "type": "string",
+      "metadata": {
+        "description": "IP Address space for your VNet."
+      }
+    }
+  },
+  "variables": {
+    "ProjectNetworkSubnet1Name": "[concat(parameters('ProjectName'), '-default-subnet')]",
+    "ProjectNetworkSubnet1Prefix": "[replace(parameters('AddressPrefix'),'/16', '/24')]",
+    "ProjectNetworkName": "[concat(parameters('ProjectName'), '-vnet')]"
+  },
+    "resources": [
+      {
+        "type": "Microsoft.Network/virtualNetworks",
+        "name": "[variables('ProjectNetworkName')]",
+        "apiVersion": "2017-06-01",
+        "location": "[resourceGroup().location]",
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "[parameters('AddressPrefix')]"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "[variables('ProjectNetworkSubnet1Name')]",
+              "properties": {
+                "addressPrefix": "[variables('ProjectNetworkSubnet1Prefix')]"
+              }
+            }
+          ]
+        },
+        "dependsOn": []
+      }
+    ],
+    "outputs": {}
+  }

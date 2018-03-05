@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model SelfServiceWeb.ViewModels.ProvisioningViewModel
+
+@{
+    ViewBag.Title = "Provision resources";
+}
+
+@section Scripts
+    {
+    <script src="~/lib/app/provisioning.js"></script>
+}
+
+<section>
+    <h2>Provision resources</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-border-md-right no-gutter-xs">
+                <div class="col-xs-12 no-gutter-sm">
+                    <h4>Project Information</h4>
+                </div>
+                <div class="form-group col-sm-8 col-md-10 no-gutter-sm">
+                    @Html.LabelFor(m => m.ProjectName)
+                    @Html.TextBoxFor(m => m.ProjectName, new { @class = "form-control", placeholder = "Project name" })
+                    @Html.ValidationMessageFor(m => m.ProjectName, "", new { @class = "text-danger" })
+                    @{
+                        if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+                        {
+                            <span class="text-danger">@Model.ErrorMessage</span>
+                        }
+                    }
+                </div>
+                <div class="form-group col-sm-8 col-md-10 no-gutter-sm">
+                    @Html.LabelFor(m => m.Email)
+                    <div>@Model.Email</div>
+                </div>
+                <div class="form-group col-sm-8 col-md-10 no-gutter-sm">
+                    @Html.LabelFor(m => m.ProvisionAzure)
+                    @Html.CheckBoxFor(x => x.ProvisionAzure, new { id = "ProvisionAzure", onchange = "provisionAzureChanged()" })
+                    <div class="form-group col-sm-8 col-md-10 no-gutter-sm">
+                        @Html.LabelFor(m => m.ProvisionDevEnvironment, new { @class = "noshow", @style = "display:none" })
+                        @Html.CheckBoxFor(x => x.ProvisionDevEnvironment, new { @class = "noshow", @style = "display:none" })
+                    </div>
+                    <div class="form-group col-sm-8 col-md-10 no-gutter-sm">
+                        @Html.LabelFor(m => m.ProvisionTestEnvironment, new { @class = "noshow", @style = "display:none" })
+                        @Html.CheckBoxFor(x => x.ProvisionTestEnvironment, new { @class = "noshow", @style = "display:none" })
+                    </div>
+                    <div class="form-group col-sm-8 col-md-10 no-gutter-sm">
+                        @Html.LabelFor(m => m.ProvisionStagingEnvironment, new { @class = "noshow", @style = "display:none" })
+                        @Html.CheckBoxFor(x => x.ProvisionStagingEnvironment, new { @class = "noshow", @style = "display:none" })
+                    </div>
+                </div>
+                <div class="form-group col-sm-8 col-md-10 no-gutter-sm">
+                    @Html.LabelFor(m => m.ProvisionVSTS)
+                    @Html.CheckBoxFor(x => x.ProvisionVSTS)
+                </div>
+                <div class="col-md-12 no-gutter-sm">
+                    <input type="submit" value="Provision resources" />
+                </div>
+            </div>
+        </div>
+                        }
+</section>

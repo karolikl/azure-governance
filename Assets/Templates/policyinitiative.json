@@ -1,0 +1,100 @@
+{
+    "properties": {
+        "displayName": "Governance Model policies",
+        "policyType": "Custom",
+        "metadata": {},
+        "parameters": {
+            "projectName": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "ProjectName",
+                    "description": "Required value for Project Name tag"
+                }
+            },
+            "owner": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Owner",
+                    "description": "Required value for Owner tag"
+                }
+            },
+            "environment": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Environment",
+                    "description": "Required value for Environment tag"
+                }
+            }
+        },
+        "policyDefinitions": [{
+            "policyDefinitionReferenceId": "4467369311180654993",
+            "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+            "parameters": {
+                "tagName": {
+                    "value": "ProjectName"
+                },
+                "tagValue": {
+                    "value": "[parameters('projectName')]"
+                }
+            }
+        }, {
+            "policyDefinitionReferenceId": "9972521065377929889",
+            "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+            "parameters": {
+                "tagName": {
+                    "value": "Owner"
+                },
+                "tagValue": {
+                    "value": "[parameters('owner')]"
+                }
+            }
+        }, {
+            "policyDefinitionReferenceId": "16216414260555419864",
+            "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+            "parameters": {
+                "tagName": {
+                    "value": "Environment"
+                },
+                "tagValue": {
+                    "value": "[parameters('environment')]"
+                }
+            }
+        }, {
+            "policyDefinitionReferenceId": "16442943116270513589",
+            "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+            "parameters": {
+                "tagName": {
+                    "value": "ProjectName"
+                },
+                "tagValue": {
+                    "value": "[parameters('projectName')]"
+                }
+            }
+        }, {
+            "policyDefinitionReferenceId": "14505467116367583963",
+            "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+            "parameters": {
+                "tagName": {
+                    "value": "Owner"
+                },
+                "tagValue": {
+                    "value": "[parameters('owner')]"
+                }
+            }
+        }, {
+            "policyDefinitionReferenceId": "14535138378704724410",
+            "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+            "parameters": {
+                "tagName": {
+                    "value": "Environment"
+                },
+                "tagValue": {
+                    "value": "[parameters('environment')]"
+                }
+            }
+        }]
+    },
+    "id": "/subscriptions/eefd4836-a496-477e-a6db-46e7c17923ac/providers/Microsoft.Authorization/policySetDefinitions/d4f86991-af5d-4120-825b-f2c8668b704b",
+    "type": "Microsoft.Authorization/policySetDefinitions",
+    "name": "d4f86991-af5d-4120-825b-f2c8668b704b"
+}
